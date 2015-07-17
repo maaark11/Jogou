@@ -1,0 +1,82 @@
+
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:id="@+id/numbersLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:paddingTop="40dp">
+
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/itensLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:paddingTop="40dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Números"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            style="@style/Heading"/>
+
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dsb_min="6"
+            app:dsb_max="15"
+            app:dsb_progressColor="@color/primary_dark"
+            app:dsb_indicatorColor="@color/primary_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jogo"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal"
+            style="@style/Heading"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/primary_dark"
+            android:text="LotoMania" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/primary_dark"
+            android:text="LotoFácil" />
+
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary_dark"
+                android:text="Sena" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/primary_dark"
+            android:text="Quina" />
+    </RadioGroup>
+
+
+    </LinearLayout>
+</LinearLayout>
