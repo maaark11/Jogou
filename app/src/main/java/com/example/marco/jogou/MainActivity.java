@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        final Jogou jogou = new Jogou();
 
 
         final DiscreteSeekBar bar = (DiscreteSeekBar) findViewById(R.id.barNumbers);
@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(DiscreteSeekBar discreteSeekBar, int i, boolean b) {
                 number[0] = bar.getProgress();
-
+                jogou.setNumber(number[0]);
             }
 
             @Override
@@ -54,7 +54,12 @@ public class MainActivity extends ActionBarActivity {
         btnQuina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertNumbers();
+                if(number[0]>=5 && number[0]<=7){
+                    jogou.setQuantity(80);
+                    insertNumbers(jogou.generate());
+                }else{
+                    Toast.makeText(MainActivity.this,"Favor selecionar de 5 a 7 dezenas!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -62,7 +67,12 @@ public class MainActivity extends ActionBarActivity {
         btnSena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "SENA!" + number[0], Toast.LENGTH_LONG).show();
+                if(number[0]>=6 && number[0]<=15){
+                    jogou.setQuantity(60);
+                    insertNumbers(jogou.generate());
+                }else{
+                    Toast.makeText(MainActivity.this,"Favor selecionar de 6 a 15 dezenas!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -70,7 +80,12 @@ public class MainActivity extends ActionBarActivity {
         btnFacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Facil", Toast.LENGTH_LONG).show();
+                if(number[0]>=15 && number[0]<=18){
+                    jogou.setQuantity(25);
+                    insertNumbers(jogou.generate());
+                }else{
+                    Toast.makeText(MainActivity.this,"Favor selecionar de 15 a 18 dezenas!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -78,13 +93,13 @@ public class MainActivity extends ActionBarActivity {
         btnMania.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Mania", Toast.LENGTH_LONG).show();
+                //50 DE 100 Verificar
             }
         });
     }
 
 
-    public void insertNumbers() {
+    public void insertNumbers(String v[]) {
         //-----ITNES FOR SHOW NUMBERS--------------------
         View tb[] = {findViewById(R.id.tr0),
                 findViewById(R.id.tr1),
@@ -100,7 +115,7 @@ public class MainActivity extends ActionBarActivity {
             //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
 
             TextView tvNumber = new TextView(this);
-            tvNumber.setText(" 00 ");
+            tvNumber.setText(v[i]);
             tvNumber.setId(5);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50,50);
