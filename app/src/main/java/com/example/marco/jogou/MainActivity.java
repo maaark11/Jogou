@@ -1,7 +1,11 @@
 package com.example.marco.jogou;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -96,12 +100,24 @@ public class MainActivity extends ActionBarActivity {
             //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
 
             TextView tvNumber = new TextView(this);
-            tvNumber.setText("[00]");
+            tvNumber.setText(" 00 ");
             tvNumber.setId(5);
-            tvNumber.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            tvNumber.setPadding(40,0,40,0);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50,50);
+
+            params.setMargins(20, 0, 20, 0); // (left, top, right, bottom);
+            tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+
+            tvNumber.setLayoutParams(params);
+            tvNumber.setGravity(Gravity.CENTER);
+
+            //------------------Circle green------------------//
+            GradientDrawable circle =  new GradientDrawable();
+            circle.setCornerRadius(100);
+            circle.setColor(Color.rgb(76,175,80));
+            tvNumber.setBackground(circle);
+            tvNumber.setTextColor(Color.WHITE);
+            //------------------Circle green------------------//
 
             if(i < 5){
                 ((LinearLayout) tb[0]).addView(tvNumber);
