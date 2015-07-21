@@ -53,6 +53,15 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal"
             android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/tr4"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:dsb_min="5"
-            app:dsb_max="20"
+            app:dsb_max="50"
             app:dsb_progressColor="@color/primary"
             app:dsb_indicatorColor="@color/primary"
             android:layout_weight="1" />
@@ -106,7 +115,7 @@
                 fancy:fb_text="Quina"
                 fancy:fb_textColor="#FFFFFF"
                 android:layout_weight="1"
-                fancy:fb_textSize="10sp"/>
+                fancy:fb_textGravity="center"/>
 
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/btnSena"
@@ -120,7 +129,7 @@
                 fancy:fb_textColor="#FFFFFF"
                 android:orientation="horizontal"
                 android:layout_weight="1"
-                fancy:fb_textSize="10sp"/>
+                fancy:fb_textGravity="center"/>
 
 
         </LinearLayout>
@@ -142,10 +151,20 @@
                 fancy:fb_text="LotoFácil"
                 fancy:fb_textColor="#FFFFFF"
                 android:layout_weight="1"
-                fancy:fb_textSize="10sp"/>
+                fancy:fb_textGravity="center"/>
 
-
-
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btnMania"
+                android:layout_margin="2sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fancy:fb_defaultColor="@color/primary"
+                fancy:fb_focusColor="@color/primary_dark"
+                fancy:fb_radius="5sp"
+                fancy:fb_text="LotoMania"
+                fancy:fb_textColor="#FFFFFF"
+                android:layout_weight="1"
+                fancy:fb_textGravity="center"/>
         </LinearLayout>
 
 
@@ -154,8 +173,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.5">
-
-    </FrameLayout>
+        android:layout_weight="1.5"/>
 
 </LinearLayout>

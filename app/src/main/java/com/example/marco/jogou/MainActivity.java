@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
 
     final int[] number ={5};
     final Jogou jogou = new Jogou();
+    boolean mania =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +57,12 @@ public class MainActivity extends ActionBarActivity {
         btnQuina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(number[0]>=5 && number[0]<=7){
+                if (number[0] >= 5 && number[0] <= 7) {
                     jogou.setNumber(80);
+                    mania = false;
                     insertNumbers(jogou.generate());
-                }else{
-                    Toast.makeText(MainActivity.this,"Favor selecionar de 5 a 7 dezenas!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Favor selecionar de 5 a 7 dezenas!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -71,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 if(number[0]>=6 && number[0]<=15){
                     jogou.setNumber(60);
+                    mania = false;
                     insertNumbers(jogou.generate());
                 }else{
                     Toast.makeText(MainActivity.this,"Favor selecionar de 6 a 15 dezenas!", Toast.LENGTH_LONG).show();
@@ -82,11 +85,29 @@ public class MainActivity extends ActionBarActivity {
         btnFacil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(number[0]>=15 && number[0]<=18){
+                if (number[0] >= 15 && number[0] <= 18) {
                     jogou.setNumber(25);
+                    mania = false;
                     insertNumbers(jogou.generate());
+                } else {
+                    Toast.makeText(MainActivity.this, "Favor selecionar de 15 a 18 dezenas!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        FancyButton btnMania = (FancyButton) findViewById(R.id.btnMania);
+        btnMania.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(number[0] >= 20){
+                    jogou.setNumber(100);
+                    if(number[0] > 25){
+                        mania = true;
+                    }
+                    insertNumbers(jogou.generate());
+                    mania = false;
                 }else{
-                    Toast.makeText(MainActivity.this,"Favor selecionar de 15 a 18 dezenas!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Favor selecionar de 20 a 50 dezenas!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -96,10 +117,13 @@ public class MainActivity extends ActionBarActivity {
             btnQuina.setTextSize(18);
             btnSena.setTextSize(18);
             btnFacil.setTextSize(18);
+            btnMania.setTextSize(18);
         }else{
-            btnQuina.setTextSize(16);
-            btnSena.setTextSize(16);
-            btnFacil.setTextSize(16);
+            btnQuina.setTextSize(10);
+            btnSena.setTextSize(10);
+            btnFacil.setTextSize(10);
+            btnMania.setTextSize(10);
+            //----------------------
         }
     }
 
@@ -111,58 +135,91 @@ public class MainActivity extends ActionBarActivity {
         View tb[] = {findViewById(R.id.tr0),
                 findViewById(R.id.tr1),
                 findViewById(R.id.tr2),
-                findViewById(R.id.tr3)};
-        int j =0;
-        while (j < tb.length){
+                findViewById(R.id.tr3),
+                findViewById(R.id.tr4)};
+        int j = 0;
+        while (j < tb.length) {
             ((LinearLayout) tb[j]).removeAllViews();
             j++;
-         }
-        for(int i=0; i<number[0];i++){
+        }
+        for (int i = 0; i < number[0]; i++) {
 
             //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
 
             TextView tvNumber = new TextView(this);
             tvNumber.setText(v[i]);
             tvNumber.setId(5);
-            tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-
             //----------------------4 WORK IN DIFFERENT SCREENS----------------------//
-            if(scale > 2.0) {
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-                params.setMargins(45, 0, 45, 0);
-                tvNumber.setPadding(12,8,12,8);
-                tvNumber.setLayoutParams(params);
-            }else {
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
-                params.setMargins(20, 0, 20, 0);
-                tvNumber.setPadding(2, 2, 2, 2);
-                tvNumber.setLayoutParams(params);
+            if (mania) {
+                if (scale > 2.0) {
+                    tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(8, 0, 8, 0);
+                    tvNumber.setPadding(12, 8, 12, 8);
+                    tvNumber.setLayoutParams(params);
+                } else {
+                    tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(40, 40);
+                    params.setMargins(2, 0, 2, 0);
+                    tvNumber.setPadding(2, 2, 2, 2);
+                    tvNumber.setLayoutParams(params);
+                }
+            } else {
+                if (scale > 2.0) {
+                    tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(45, 0, 45, 0);
+                    tvNumber.setPadding(14, 10, 14, 10);
+                    tvNumber.setLayoutParams(params);
+                } else {
+                    tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(40, 40);
+                    params.setMargins(20, 0, 20, 0);
+                    tvNumber.setPadding(2, 2, 2, 2);
+                    tvNumber.setLayoutParams(params);
+                }
             }
             tvNumber.setGravity(Gravity.CENTER);
             //----------------------4 WORK IN DIFFERENT SCREENS----------------------//
 
             //------------------Circle green------------------//
-            GradientDrawable circle =  new GradientDrawable();
+            GradientDrawable circle = new GradientDrawable();
             circle.setCornerRadius(100);
-            circle.setColor(Color.rgb(76,175,80));
+            circle.setColor(Color.rgb(76, 175, 80));
             tvNumber.setBackground(circle);
             tvNumber.setTextColor(Color.WHITE);
             //------------------Circle green------------------//
-
-            if(i < 5){
-                ((LinearLayout) tb[0]).addView(tvNumber);
-            }else if((i >= 5) && (i<10)){
-                ((LinearLayout) tb[1]).addView(tvNumber);
-            }else if(i >= 10 && i<15){
-                ((LinearLayout) tb[2]).addView(tvNumber);
-            }else if(i >= 15 && i<20){
-                ((LinearLayout) tb[3]).addView(tvNumber);
+            if (number[0] > 25) {
+                if (i < 10) {
+                    ((LinearLayout) tb[0]).addView(tvNumber);
+                } else if ((i >= 10) && (i < 20)) {
+                    ((LinearLayout) tb[1]).addView(tvNumber);
+                } else if (i >= 20 && i < 30) {
+                    ((LinearLayout) tb[2]).addView(tvNumber);
+                } else if (i >= 30 && i < 40) {
+                    ((LinearLayout) tb[3]).addView(tvNumber);
+                } else if (i >= 40 && i < 50) {
+                    ((LinearLayout) tb[4]).addView(tvNumber);
+                }
+            } else {
+                if (i < 5) {
+                    ((LinearLayout) tb[0]).addView(tvNumber);
+                } else if ((i >= 5) && (i < 10)) {
+                    ((LinearLayout) tb[1]).addView(tvNumber);
+                } else if (i >= 10 && i < 15) {
+                    ((LinearLayout) tb[2]).addView(tvNumber);
+                } else if (i >= 15 && i < 20) {
+                    ((LinearLayout) tb[3]).addView(tvNumber);
+                } else if (i >= 20 && i < 25) {
+                    ((LinearLayout) tb[4]).addView(tvNumber);
+                }
             }
         }
     }
-
 
 
 
