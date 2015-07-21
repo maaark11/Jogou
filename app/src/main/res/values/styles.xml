@@ -4,9 +4,6 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="android:textColor">@color/secondary_text</item>
         <item name="android:theme">@style/CustomActionBarTheme</item>
-
-    </style>
-    <style name="Texts">
         <item name="android:textSize">22sp</item>
     </style>
     <!-- Custom Styles. -->

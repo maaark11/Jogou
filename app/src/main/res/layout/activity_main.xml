@@ -19,7 +19,6 @@
         android:layout_marginBottom="20dp">
 
         <LinearLayout
-            style="@style/Texts"
             android:id="@+id/tr0"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -63,7 +62,6 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/Texts"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Números"
@@ -82,7 +80,6 @@
             android:layout_weight="1" />
 
         <TextView
-            style="@style/Texts"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Jogo"
@@ -95,34 +92,35 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|center_horizontal">
+            android:gravity="center|center_horizontal"
+            android:layout_weight="1">
 
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/btnQuina"
-                android:layout_margin="2dp"
+                android:layout_margin="2sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 fancy:fb_defaultColor="@color/primary"
                 fancy:fb_focusColor="@color/primary_dark"
-                fancy:fb_radius="5dp"
+                fancy:fb_radius="5sp"
                 fancy:fb_text="Quina"
                 fancy:fb_textColor="#FFFFFF"
                 android:layout_weight="1"
-                fancy:fb_textSize="7sp"/>
+                fancy:fb_textSize="10sp"/>
 
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/btnSena"
-                android:layout_margin="2dp"
+                android:layout_margin="2sp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 fancy:fb_defaultColor="@color/primary"
                 fancy:fb_focusColor="@color/primary_dark"
-                fancy:fb_radius="5dp"
-                fancy:fb_text="Sena"
+                fancy:fb_radius="5sp"
+                fancy:fb_text="Mega Sena"
                 fancy:fb_textColor="#FFFFFF"
                 android:orientation="horizontal"
                 android:layout_weight="1"
-                fancy:fb_textSize="7sp"/>
+                fancy:fb_textSize="10sp"/>
 
 
         </LinearLayout>
@@ -130,35 +128,23 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/btnFacil"
-                android:layout_margin="2dp"
+                android:layout_margin="2sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 fancy:fb_defaultColor="@color/primary"
                 fancy:fb_focusColor="@color/primary_dark"
-                fancy:fb_radius="5dp"
+                fancy:fb_radius="5sp"
                 fancy:fb_text="LotoFácil"
                 fancy:fb_textColor="#FFFFFF"
                 android:layout_weight="1"
-                fancy:fb_textSize="7sp"
-                />
+                fancy:fb_textSize="10sp"/>
 
-            <mehdi.sakout.fancybuttons.FancyButton
-                android:id="@+id/btnMania"
-                android:layout_margin="2dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                fancy:fb_defaultColor="@color/primary"
-                fancy:fb_focusColor="@color/primary_dark"
-                fancy:fb_radius="5dp"
-                fancy:fb_text="LotoMania"
-                fancy:fb_textColor="#FFFFFF"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                fancy:fb_textSize="7sp"/>
+
 
         </LinearLayout>
 

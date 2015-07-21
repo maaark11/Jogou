@@ -5,7 +5,8 @@ package com.example.marco.jogou;
  */
 
 import java.util.Random;
-
+//Number - Numeros disponiveis
+//Quantity - sorteados
 public class Jogou{
     private Random rand = new Random();
     private boolean exists = false;
@@ -16,10 +17,10 @@ public class Jogou{
     public Jogou(){
         number=0;
         quantity=5;
-        vet= new int[quantity];
     }
 
     public String[] generate()    {
+        vet= new int[quantity];
         vet[0] = getSortN();
         for(int i=1; i<quantity; i++)        {
             vet[i] = getSortN();
@@ -61,7 +62,7 @@ public class Jogou{
             if(v[i] < 10){
                 vetor[i] = "0"+v[i];
             }else{
-                vetor[i] = String.valueOf(v[i]);
+                vetor[i] = v[i]+"";
             }
         }
         return vetor;

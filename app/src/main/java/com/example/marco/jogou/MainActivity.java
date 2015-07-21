@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,19 +23,20 @@ import mehdi.sakout.fancybuttons.FancyButton;
 public class MainActivity extends ActionBarActivity {
 
     final int[] number ={5};
+    final Jogou jogou = new Jogou();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Jogou jogou = new Jogou();
-
+        MainActivity context = this;
+        float scale = context.getResources().getDisplayMetrics().density;
 
         final DiscreteSeekBar bar = (DiscreteSeekBar) findViewById(R.id.barNumbers);
         bar.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
             public void onProgressChanged(DiscreteSeekBar discreteSeekBar, int i, boolean b) {
                 number[0] = bar.getProgress();
-                jogou.setNumber(number[0]);
+                jogou.setQuantity(number[0]);
             }
 
             @Override
@@ -55,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if(number[0]>=5 && number[0]<=7){
-                    jogou.setQuantity(80);
+                    jogou.setNumber(80);
                     insertNumbers(jogou.generate());
                 }else{
                     Toast.makeText(MainActivity.this,"Favor selecionar de 5 a 7 dezenas!", Toast.LENGTH_LONG).show();
@@ -68,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if(number[0]>=6 && number[0]<=15){
-                    jogou.setQuantity(60);
+                    jogou.setNumber(60);
                     insertNumbers(jogou.generate());
                 }else{
                     Toast.makeText(MainActivity.this,"Favor selecionar de 6 a 15 dezenas!", Toast.LENGTH_LONG).show();
@@ -81,7 +83,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if(number[0]>=15 && number[0]<=18){
-                    jogou.setQuantity(25);
+                    jogou.setNumber(25);
                     insertNumbers(jogou.generate());
                 }else{
                     Toast.makeText(MainActivity.this,"Favor selecionar de 15 a 18 dezenas!", Toast.LENGTH_LONG).show();
@@ -89,17 +91,22 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        FancyButton btnMania = (FancyButton) findViewById(R.id.btnMania);
-        btnMania.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //50 DE 100 Verificar
-            }
-        });
+
+        if(scale > 2.0){
+            btnQuina.setTextSize(18);
+            btnSena.setTextSize(18);
+            btnFacil.setTextSize(18);
+        }else{
+            btnQuina.setTextSize(16);
+            btnSena.setTextSize(16);
+            btnFacil.setTextSize(16);
+        }
     }
 
 
     public void insertNumbers(String v[]) {
+        MainActivity context = this;
+        float scale = context.getResources().getDisplayMetrics().density;
         //-----ITNES FOR SHOW NUMBERS--------------------
         View tb[] = {findViewById(R.id.tr0),
                 findViewById(R.id.tr1),
@@ -117,14 +124,24 @@ public class MainActivity extends ActionBarActivity {
             TextView tvNumber = new TextView(this);
             tvNumber.setText(v[i]);
             tvNumber.setId(5);
+            tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50,50);
-
-            params.setMargins(20, 0, 20, 0); // (left, top, right, bottom);
-            tvNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-
-            tvNumber.setLayoutParams(params);
+            //----------------------4 WORK IN DIFFERENT SCREENS----------------------//
+            if(scale > 2.0) {
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.setMargins(45, 0, 45, 0);
+                tvNumber.setPadding(12,8,12,8);
+                tvNumber.setLayoutParams(params);
+            }else {
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
+                params.setMargins(20, 0, 20, 0);
+                tvNumber.setPadding(2, 2, 2, 2);
+                tvNumber.setLayoutParams(params);
+            }
             tvNumber.setGravity(Gravity.CENTER);
+            //----------------------4 WORK IN DIFFERENT SCREENS----------------------//
 
             //------------------Circle green------------------//
             GradientDrawable circle =  new GradientDrawable();
