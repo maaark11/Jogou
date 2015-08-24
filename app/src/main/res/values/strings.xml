@@ -1,3 +1,35 @@
 <resources>
+
     <string name="app_name">Jogou!</string>
+
+
+    <!--Button Names-->
+    <string name="ok">OK</string>
+
+    <!--Edit-Text Names-->
+    <string name="e_numbers">Números</string>
+    <string name="e_game">Jogo</string>
+
+    <!--Toasts Names-->
+    <string name="t_quina">Favor selecionar de 5 a 7 dezenas!</string>
+    <string name="t_sena">Favor selecionar de 6 a 15 dezenas!</string>
+    <string name="t_facil">Favor selecionar de 15 a 18 dezenas!</string>
+    <string name="t_mania">Favor selecionar de 25 a 100 dezenas!</string>
+
+    <!--MenuItens-->
+        <!--Titles-->
+    <string name="mt_howto">Como Jogar</string>
+    <string name="mt_about">Sobre</string>
+    <string name="mt_welcome">Bem Vindo!</string>
+
+        <!--Messages-->
+    <string name="mm_about">Jogou! é um aplicativo que gera automaticamente números para jogos de loteria.\n\nCríticas, Dúvidas ou Sugestões:</string>
+    <string name="mm_aboutI">Agradecimentos:\n
+                El Mehdi Sakout - FancyButtons\n
+                Gustavo Claramunt - DiscreteSeekBar</string>
+    <string name="mm_aboutII">2015©</string>
+    <string name="mm_howto">Selecione as dezenas e o tipo de jogo para gerar os números.</string>
+    <string name="mm_welcome">Na fila da lotérica deu vontade de jogar mais alguns numerozinhos?\nO "Jogou!" resolve isso para você!...</string>
+    <string name="mm_welcomeI">Para Gerar:\nSelecione a quantidade de dezenas e o jogo desejado.</string>
+    <string name="mm_welcomeII">Que a sorte esteja com você!!</string>
 </resources>

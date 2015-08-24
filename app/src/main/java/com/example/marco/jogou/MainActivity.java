@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -24,13 +25,29 @@ public class MainActivity extends ActionBarActivity {
 
     final int[] number ={5};
     final Jogou jogou = new Jogou();
+    final static DialogHowTo dialogHow = new DialogHowTo();
+    final static DialogAbout dialogAbo = new DialogAbout();
+    final static DialogWelcome dialogwelcome = new DialogWelcome();
     boolean mania =false;
+    boolean first = true;
+
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MainActivity context = this;
         float scale = context.getResources().getDisplayMetrics().density;
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("Jogou!");
+        setSupportActionBar(toolbar);
+
+        if(first){
+            dialogwelcome.show(getFragmentManager(), "TAG");
+            first = false;
+        }
+
 
         final DiscreteSeekBar bar = (DiscreteSeekBar) findViewById(R.id.barNumbers);
         bar.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
@@ -62,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
                     mania = false;
                     insertNumbers(jogou.generate());
                 } else {
-                    Toast.makeText(MainActivity.this, "Favor selecionar de 5 a 7 dezenas!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.t_quina, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -76,7 +93,7 @@ public class MainActivity extends ActionBarActivity {
                     mania = false;
                     insertNumbers(jogou.generate());
                 }else{
-                    Toast.makeText(MainActivity.this,"Favor selecionar de 6 a 15 dezenas!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,R.string.t_sena, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -90,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
                     mania = false;
                     insertNumbers(jogou.generate());
                 } else {
-                    Toast.makeText(MainActivity.this, "Favor selecionar de 15 a 18 dezenas!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.t_facil, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -107,7 +124,7 @@ public class MainActivity extends ActionBarActivity {
                     insertNumbers(jogou.generate());
                     mania = false;
                 }else{
-                    Toast.makeText(MainActivity.this,"Favor selecionar de 20 a 50 dezenas!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.t_mania, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -126,7 +143,6 @@ public class MainActivity extends ActionBarActivity {
             //----------------------
         }
     }
-
 
     public void insertNumbers(String v[]) {
         MainActivity context = this;
@@ -230,18 +246,6 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -257,20 +261,24 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_howTo) {
+            dialogHow.show(getFragmentManager(), "TAG");
+        }
+        if (id == R.id.action_about) {
+            dialogAbo.show(getFragmentManager(), "TAG");
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
+
+
+
 
     @Override
     protected void onResume() {
 
         super.onResume();
     }
-
-
 }
 
 
