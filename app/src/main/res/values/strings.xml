@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Jogou!</string>
-
+    <string name="banner_ad_unit_id">ca-app-pub-1546575382797292/2540077768</string>
 
     <!--Button Names-->
     <string name="ok">OK</string>

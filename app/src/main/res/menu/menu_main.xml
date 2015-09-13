@@ -8,4 +8,8 @@
     <item android:id="@+id/action_about" android:title="@string/mt_about"
         android:orderInCategory="100" app:showAsAction="never"></item>
 
+    <item android:id="@+id/action_search" android:orderInCategory="200"
+        android:title="Search" android:icon="@drawable/ic_action"
+        app:showAsAction="ifRoom"></item>
+
 </menu>

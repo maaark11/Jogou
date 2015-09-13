@@ -1,19 +1,25 @@
 package com.example.marco.jogou;
 
+import android.content.ClipData;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.internal.view.menu.MenuView;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -43,11 +49,12 @@ public class MainActivity extends ActionBarActivity {
         toolbar.setTitle("Jogou!");
         setSupportActionBar(toolbar);
 
-        if(first){
-            dialogwelcome.show(getFragmentManager(), "TAG");
-            first = false;
-        }
+        //Iniciando ADS
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("8A173C02D6597FC729CC1E00A9A40F49").build();
+        mAdView.loadAd(adRequest);
 
+        dialogwelcome.show(getFragmentManager(), "TAG");
 
         final DiscreteSeekBar bar = (DiscreteSeekBar) findViewById(R.id.barNumbers);
         bar.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
@@ -266,6 +273,10 @@ public class MainActivity extends ActionBarActivity {
         }
         if (id == R.id.action_about) {
             dialogAbo.show(getFragmentManager(), "TAG");
+        }
+
+        if(id == R.id.action_search){
+            Toast.makeText(MainActivity.this, "Test", Toast.LENGTH_LONG).show();
         }
 
         return true;
